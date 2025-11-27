@@ -1,0 +1,6 @@
+[scratch3]
+source = "github"
+github = "scratchfoundation/scratch-desktop"
+use_max_tag = true
+from_pattern = '^\D*(\d+\.\d+\.\d+)$'
+to_pattern = '\1'
