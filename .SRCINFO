@@ -1,11 +1,11 @@
 pkgbase = scratch3
 	pkgdesc = Scratch 3.0 as a self-contained desktop application
 	pkgver = 3.31.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scratchfoundation/scratch-desktop
 	arch = x86_64
 	arch = aarch64
-	license = AGPL-3.0
+	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = nodejs
 	makedepends = npm

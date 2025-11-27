@@ -4,11 +4,11 @@
 
 pkgname="scratch3"
 pkgver=3.31.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Scratch 3.0 as a self-contained desktop application'
 arch=('x86_64' 'aarch64')
 url='https://github.com/scratchfoundation/scratch-desktop'
-license=('AGPL-3.0')
+license=('AGPL-3.0-only')
 depends=('fuse2')
 makedepends=('git' 'nodejs' 'npm')
 provides=('scratch3')
