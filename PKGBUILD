@@ -4,7 +4,7 @@
 
 pkgname="scratch3"
 pkgver=3.31.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Scratch 3.0 as a self-contained desktop application'
 arch=('x86_64' 'aarch64')
 url='https://github.com/scratchfoundation/scratch-desktop'
@@ -24,6 +24,10 @@ sha256sums=('e38d5e8febfd61454d5d4f402177963deedc8350a37ee4dd327cd5079614d4eb'
 
 prepare() {
   cd scratch-desktop
+
+  # Patch: Set window icon
+  sed -i "s#const window = new BrowserWindow({#const window = new BrowserWindow({ icon: '/usr/share/icons/hicolor/1024x1024/apps/scratch3.png',#g" ./src/main/index.js
+  
   npm install
   npm run clean
   npm run fetch
@@ -37,6 +41,7 @@ build() {
 package() {
   install -Dm755 "$srcdir/scratch-desktop/dist/Scratch 3-$pkgver.AppImage" "$pkgdir/usr/bin/scratch3"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$srcdir/scratch-desktop/src/icon/ScratchDesktop.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$pkgname.png"
   install -Dm644 "$srcdir/scratch-desktop/src/icon/ScratchDesktop.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm644 "$srcdir/scratch-desktop/src/icon/ScratchDesktop.svg" "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes/x-scratch3-project.svg"
   install -Dm644 "$srcdir/scratch-desktop/src/icon/ScratchDesktop.svg" "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes/x-scratch3-sprite.svg"
